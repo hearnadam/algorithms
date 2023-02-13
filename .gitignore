@@ -1,0 +1,9 @@
+# scala
+.bloop
+.bsp
+.metals
+project
+target
+
+# vs code
+.vscode
