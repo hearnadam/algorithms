@@ -11,10 +11,15 @@ object Merge extends Sortable {
                 merge(sort(left), sort(right))
         }
 
-    def merge(left: Seq[Int], right: Seq[Int]): Seq[Int] =
+    private def merge(left: Seq[Int], right: Seq[Int]): Seq[Int] =
         (left, right) match {
             case (left, Nil) => left
             case (Nil, right) => right
-            case (left, right) => ???
+            case (leftHead :: leftTail, rightHead :: rightTail) =>
+                if (leftHead < rightHead) {
+                    leftHead +: merge(leftTail, right)
+                } else {
+                    rightHead +: merge(left, rightTail)
+                }
         }
 }
